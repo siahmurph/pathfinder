@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ghcr.io/siahmurph/parouter-operapps
+  IMAGE_PREFIX: ghcr.io/siahmurph/parouter-op
 
 jobs:
   build-and-push:
