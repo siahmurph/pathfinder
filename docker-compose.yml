@@ -1,0 +1,19 @@
+services:
+  api:
+    build: ./api
+    container_name: parouter_api
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - ROOT_PATH=/api
+      - DB_PATH=/app/data/ROUTES.db
+
+  frontend:
+    build: ./frontend
+    container_name: parouter_frontend
+    restart: always
+    ports:
+      - "8080:80"
