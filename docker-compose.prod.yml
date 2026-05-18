@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  api:
+    image: ghcr.io/siahmurph/parouter-op-api:latest
+    container_name: parouter_api
+    restart: always
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - parouter_data:/app/data
+    environment:
+      - ROOT_PATH=/api
+      - DB_PATH=/app/data/ROUTES.db
+
+  frontend:
+    image: ghcr.io/siahmurph/parouter-op-frontend:latest
+    container_name: parouter_frontend
+    restart: always
+    ports:
+      - "127.0.0.1:8080:80"
+
+volumes:
+  parouter_data:
