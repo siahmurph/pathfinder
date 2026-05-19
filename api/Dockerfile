@@ -1,12 +1,12 @@
 FROM python:3.11-slim
 WORKDIR /app
 
-# Install dependencies
+# Copy requirements from the root context
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files
-COPY . .
+# Copy only the contents of the api directory into /app
+COPY api/ .
 
 # Ensure data directory exists
 RUN mkdir -p /app/data
