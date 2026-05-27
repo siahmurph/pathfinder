@@ -5,8 +5,8 @@
     if (!res.ok) return
     const status = await res.json()
     if (status.parouter?.enabled) {
-      document.getElementById('main-content').style.display = 'none'
-      document.getElementById('maintenance-screen').style.display = 'block'
+      document.getElementById('main-content').classList.add('d-none')
+      document.getElementById('maintenance-screen').classList.remove('d-none')
       document.getElementById('maintenance-message').textContent =
         status.parouter.message || 'PA Router is temporarily unavailable.'
     }

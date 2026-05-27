@@ -14,13 +14,16 @@
 	</head>
 	<body>
 		<!-- Maintenance Overlay -->
-		<div id="maintenance-screen" style="display: none">
-			<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-				<div class="card text-center mx-auto" style="max-width: 480px">
+		<div id="maintenance-screen" class="d-none">
+			<div class="container-lg py-5 px-3 text-center">
+				<div class="card mx-auto" style="max-width: 480px">
 					<div class="card-body py-5">
-						<i class="bi bi-cone-striped display-1 text-warning mb-3 d-block"></i>
+						<i
+							class="bi bi-cone-striped display-1 text-warning mb-3 d-block"></i>
 						<h3 class="mb-3">Under Maintenance</h3>
-						<p class="text-secondary" id="maintenance-message">PA Router is temporarily unavailable.</p>
+						<p class="text-secondary" id="maintenance-message">
+							PA Router is temporarily unavailable.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -30,7 +33,10 @@
 		<header class="app-header px-4 py-3 mb-4 d-flex align-items-center">
 			<div>
 				<div class="app-title">
-					<i class="bi bi-diagram-3-fill me-2 text-warning" style="font-style: normal"></i>PA Router
+					<i
+						class="bi bi-diagram-3-fill me-2 text-warning"
+						style="font-style: normal"></i
+					>PA Router
 				</div>
 				<div class="app-sub text-secondary mt-1">Public Affairs Router</div>
 			</div>
@@ -40,7 +46,6 @@
 		<div id="main-content">
 			<main class="container-lg px-3 px-md-4 pb-5">
 				<div class="row g-4">
-
 					<!-- Add Panel -->
 					<div class="col-12 col-lg-5">
 						<div class="card border shadow-sm h-100">
@@ -80,39 +85,76 @@
 											<div class="row g-2">
 												<div class="col-auto">
 													<div class="form-check">
-														<input type="checkbox" class="form-check-input" id="toWeb" name="toWhom[]" value="toWeb" />
-														<label class="form-check-label" for="toWeb">To Web</label>
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="toWeb"
+															name="toWhom[]"
+															value="toWeb" />
+														<label class="form-check-label" for="toWeb"
+															>To Web</label
+														>
 													</div>
 												</div>
 												<div class="col-auto">
 													<div class="form-check">
-														<input type="checkbox" class="form-check-input" id="toVOS" name="toWhom[]" value="toVOS" />
-														<label class="form-check-label" for="toVOS">To VOS</label>
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="toVOS"
+															name="toWhom[]"
+															value="toVOS" />
+														<label class="form-check-label" for="toVOS"
+															>To VOS</label
+														>
 													</div>
 												</div>
 												<div class="col-auto">
 													<div class="form-check">
-														<input type="checkbox" class="form-check-input" id="toNexio" name="toWhom[]" value="toNexio" />
-														<label class="form-check-label" for="toNexio">To Nexio</label>
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="toNexio"
+															name="toWhom[]"
+															value="toNexio" />
+														<label class="form-check-label" for="toNexio"
+															>To Nexio</label
+														>
 													</div>
 												</div>
 												<div class="col-auto">
 													<div class="form-check">
-														<input type="checkbox" class="form-check-input" id="toAffiliate" name="toWhom[]" value="toAffiliate" />
-														<label class="form-check-label" for="toAffiliate">To Affil</label>
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="toAffiliate"
+															name="toWhom[]"
+															value="toAffiliate" />
+														<label class="form-check-label" for="toAffiliate"
+															>To Affil</label
+														>
 													</div>
 												</div>
 												<div class="col-auto">
 													<div class="form-check">
-														<input type="checkbox" class="form-check-input" id="toTMD" name="toWhom[]" value="toTMD" />
-														<label class="form-check-label" for="toTMD">To TMD</label>
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="toTMD"
+															name="toWhom[]"
+															value="toTMD" />
+														<label class="form-check-label" for="toTMD"
+															>To TMD</label
+														>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="mb-4">
-										<label for="folderPath" class="form-label">Folder Path</label>
+										<label for="folderPath" class="form-label"
+											>Folder Path</label
+										>
 										<input
 											type="text"
 											class="form-control"
@@ -138,7 +180,9 @@
 								<form id="formfind">
 									<div class="mb-3 d-flex gap-2 align-items-end">
 										<div>
-											<label for="search_prefix" class="form-label">Series Prefix</label>
+											<label for="search_prefix" class="form-label"
+												>Series Prefix</label
+											>
 											<input
 												type="text"
 												class="form-control prefix-input"
@@ -156,10 +200,16 @@
 								<div id="results" class="invisible">
 									<hr class="my-4" />
 									<form id="formresult">
-										<input type="hidden" id="searched_id" name="searched_id" value="" />
+										<input
+											type="hidden"
+											id="searched_id"
+											name="searched_id"
+											value="" />
 										<div class="row g-3 mb-3">
 											<div class="col-auto">
-												<label for="searched_prefix" class="form-label">Series Prefix</label>
+												<label for="searched_prefix" class="form-label"
+													>Series Prefix</label
+												>
 												<input
 													type="text"
 													class="form-control prefix-input"
@@ -170,7 +220,9 @@
 													autocomplete="off" />
 											</div>
 											<div class="col">
-												<label for="searched_program" class="form-label">Series Name</label>
+												<label for="searched_program" class="form-label"
+													>Series Name</label
+												>
 												<input
 													type="text"
 													class="form-control"
@@ -185,39 +237,86 @@
 												<div class="row g-2">
 													<div class="col-auto">
 														<div class="form-check">
-															<input type="checkbox" class="form-check-input" id="searched_toWeb" name="updateToWhom[]" value="toWeb" />
-															<label class="form-check-label" for="searched_toWeb">To Web</label>
+															<input
+																type="checkbox"
+																class="form-check-input"
+																id="searched_toWeb"
+																name="updateToWhom[]"
+																value="toWeb" />
+															<label
+																class="form-check-label"
+																for="searched_toWeb"
+																>To Web</label
+															>
 														</div>
 													</div>
 													<div class="col-auto">
 														<div class="form-check">
-															<input type="checkbox" class="form-check-input" id="searched_toVOS" name="updateToWhom[]" value="toVOS" />
-															<label class="form-check-label" for="searched_toVOS">To VOS</label>
+															<input
+																type="checkbox"
+																class="form-check-input"
+																id="searched_toVOS"
+																name="updateToWhom[]"
+																value="toVOS" />
+															<label
+																class="form-check-label"
+																for="searched_toVOS"
+																>To VOS</label
+															>
 														</div>
 													</div>
 													<div class="col-auto">
 														<div class="form-check">
-															<input type="checkbox" class="form-check-input" id="searched_toNexio" name="updateToWhom[]" value="toNexio" />
-															<label class="form-check-label" for="searched_toNexio">To Nexio</label>
+															<input
+																type="checkbox"
+																class="form-check-input"
+																id="searched_toNexio"
+																name="updateToWhom[]"
+																value="toNexio" />
+															<label
+																class="form-check-label"
+																for="searched_toNexio"
+																>To Nexio</label
+															>
 														</div>
 													</div>
 													<div class="col-auto">
 														<div class="form-check">
-															<input type="checkbox" class="form-check-input" id="searched_toAffiliate" name="updateToWhom[]" value="toAffiliate" />
-															<label class="form-check-label" for="searched_toAffiliate">To Affil</label>
+															<input
+																type="checkbox"
+																class="form-check-input"
+																id="searched_toAffiliate"
+																name="updateToWhom[]"
+																value="toAffiliate" />
+															<label
+																class="form-check-label"
+																for="searched_toAffiliate"
+																>To Affil</label
+															>
 														</div>
 													</div>
 													<div class="col-auto">
 														<div class="form-check">
-															<input type="checkbox" class="form-check-input" id="searched_toTMD" name="updateToWhom[]" value="toTMD" />
-															<label class="form-check-label" for="searched_toTMD">To TMD</label>
+															<input
+																type="checkbox"
+																class="form-check-input"
+																id="searched_toTMD"
+																name="updateToWhom[]"
+																value="toTMD" />
+															<label
+																class="form-check-label"
+																for="searched_toTMD"
+																>To TMD</label
+															>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="mb-4">
-											<label for="searched_path" class="form-label">Folder Path</label>
+											<label for="searched_path" class="form-label"
+												>Folder Path</label
+											>
 											<input
 												type="text"
 												class="form-control"
@@ -239,12 +338,19 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</main>
 
 			<footer class="text-center py-4">
-				<small class="text-secondary opacity-50" style="font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;">Public Affairs Router</small>
+				<small
+					class="text-secondary opacity-50"
+					style="
+						font-size: 0.7rem;
+						letter-spacing: 0.08em;
+						text-transform: uppercase;
+					"
+					>Public Affairs Router</small
+				>
 			</footer>
 		</div>
 
