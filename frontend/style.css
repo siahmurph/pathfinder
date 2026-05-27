@@ -1,68 +1,73 @@
 body {
-	background: rgb(2, 0, 36);
-	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-	color: #fff !important;
+	min-height: 100vh;
+	background-color: var(--bs-body-bg);
 }
-.maxwidth {
-	max-width: 1520px;
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.app-header {
+	background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.bg {
-	position: absolute;
-	z-index: -1;
-	font-weight: bold;
-	font-size: 250px;
-	color: #5959a2;
-	opacity: 0.2;
-	text-align: center;
-	line-height: 256px;
-	height: 100%;
-	overflow: hidden;
-	padding: 0 5px;
-	max-width: 1520px;
+
+[data-bs-theme="light"] .app-header {
+	background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
 }
-.form-control {
-	max-width: 489px;
+
+.app-title {
+	font-size: 3.2rem;
+	font-weight: 900;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #f97316;
+	text-shadow:
+		0 0 30px rgba(249, 115, 22, 0.5),
+		0 2px 8px rgba(0, 0, 0, 0.6);
+	line-height: 1;
+	font-style: italic;
 }
-[id$="prefix"] {
+
+.app-sub {
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 0.55;
+}
+
+/* ── Section labels ──────────────────────────────────────────────────────── */
+.section-label {
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--bs-secondary-color);
+}
+
+/* ── Forms ───────────────────────────────────────────────────────────────── */
+.prefix-input {
 	max-width: 150px;
 	text-transform: uppercase;
 }
+
 sup {
-	font-size: 10px;
-	color: #ffff3f;
+	font-size: 0.65rem;
 	text-transform: uppercase;
 }
-input[type="text"] {
-	color: #080869 !important;
+
+.choices {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
 }
-input[type="checkbox"] ~ label {
-	padding-left: 4px;
+
+[data-bs-theme="light"] .choices {
+	background: rgba(0, 0, 0, 0.04);
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
-input[type="checkbox"] ~ label:hover {
-	color: lightblue;
-	cursor: pointer;
-}
+
 input[type="checkbox"]:hover {
 	cursor: pointer;
 }
-input[type="checkbox"]:hover ~ label {
-	color: lightblue;
-}
-.form-check {
-	min-width: 82px;
-}
-.choices {
-	background: rgba(255, 255, 255, 0.2);
-	padding: 10px 5px 0 10px;
-	border-radius: 5px;
-	margin: 0 0 15px 0;
-	max-width: 489px;
-}
-@supports (max-width: fit-content) {
-	.choices {
-		max-width: fit-content;
-	}
-}
-.hide {
-	display: none;
+
+input[type="checkbox"] ~ label:hover {
+	cursor: pointer;
+	color: var(--bs-primary);
 }
