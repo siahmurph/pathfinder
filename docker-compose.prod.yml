@@ -6,7 +6,7 @@ services:
     container_name: parouter_api
     restart: always
     ports:
-      - "127.0.0.1:8000:8000"
+      - "8000:8000"
     volumes:
       - parouter_data:/app/data
     environment:
@@ -18,7 +18,7 @@ services:
     container_name: parouter_frontend
     restart: always
     ports:
-      - "127.0.0.1:8080:80"
+      - "8005:80"
 
 volumes:
   parouter_data:
