@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>PA Router</title>
+		<title>Pathfinder</title>
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<!-- Maintenance Overlay -->
 		<div id="maintenance-screen" class="d-none">
 			<div class="container-lg py-5 px-3 text-center">
 				<div class="card mx-auto" style="max-width: 480px">
@@ -22,318 +21,243 @@
 							class="bi bi-cone-striped display-1 text-warning mb-3 d-block"></i>
 						<h3 class="mb-3">Under Maintenance</h3>
 						<p class="text-secondary" id="maintenance-message">
-							PA Router is temporarily unavailable.
+							Pathfinder is temporarily unavailable.
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Header -->
 		<header class="app-header px-4 py-3 mb-4 d-flex align-items-center">
 			<div>
 				<div class="app-title">
 					<i
-						class="bi bi-diagram-3-fill me-2 text-warning"
-						style="font-style: normal"></i
-					>PA Router
+						class="bi bi-compass-fill me-2 text-warning"
+						style="font-style: normal"></i>
+					Pathfinder
 				</div>
-				<div class="app-sub text-secondary mt-1">Public Affairs Router</div>
+				<div class="app-sub text-secondary mt-1">Media routing rule lookup</div>
 			</div>
 		</header>
 
-		<!-- Main -->
 		<div id="main-content">
 			<main class="container-lg px-3 px-md-4 pb-5">
 				<div class="row g-4">
-					<!-- Add Panel -->
-					<div class="col-12 col-lg-5">
-						<div class="card border shadow-sm h-100">
+					<div class="col-12 col-xl-5">
+						<div class="card border shadow-sm mb-4">
 							<div class="card-body p-4">
-								<h6 class="section-label mb-4">
-									<i class="bi bi-plus-circle me-2"></i>Add Series
+								<h6 class="section-label mb-3" id="rule-form-heading">
+									<i class="bi bi-plus-circle me-2"></i>Create Rule
 								</h6>
-								<form id="formadd">
-									<div class="mb-3">
-										<label for="prefix" class="form-label">
-											Series Prefix <sup class="text-warning">*Required</sup>
-										</label>
-										<input
-											type="text"
-											class="form-control prefix-input"
-											id="prefix"
-											name="prefix"
-											oninput="validate(this)"
-											required
-											autocomplete="off" />
+								<form id="rule-form" class="pathfinder-form">
+									<input type="hidden" id="rule_id" />
+									<div class="mb-2">
+										<label class="form-label" for="program_name"
+											>Program Name</label
+										>
+										<input class="form-control" id="program_name" required />
 									</div>
-									<div class="mb-3">
-										<label for="seriesName" class="form-label">
-											Series Name <sup class="text-warning">*Required</sup>
-										</label>
+									<div class="mb-2">
+										<label class="form-label" for="match_type"
+											>Match Type</label
+										>
+										<select class="form-select" id="match_type">
+											<option value="">(null)</option>
+											<option value="title">title</option>
+											<option value="alt_id">alt_id</option>
+											<option value="filename">filename</option>
+										</select>
+									</div>
+									<div class="mb-2">
+										<label class="form-label" for="pattern">Pattern</label>
 										<input
-											type="text"
 											class="form-control"
-											id="seriesName"
-											name="seriesName"
-											required
-											autocomplete="off" />
+											id="pattern"
+											placeholder="%PROMO%" />
 									</div>
-									<div class="mb-3">
-										<label class="form-label">Where Do They Go?</label>
-										<div class="choices p-3 rounded">
-											<div class="row g-2">
-												<div class="col-auto">
-													<div class="form-check">
-														<input
-															type="checkbox"
-															class="form-check-input"
-															id="toWeb"
-															name="toWhom[]"
-															value="toWeb" />
-														<label class="form-check-label" for="toWeb"
-															>To Web</label
-														>
-													</div>
-												</div>
-												<div class="col-auto">
-													<div class="form-check">
-														<input
-															type="checkbox"
-															class="form-check-input"
-															id="toVOS"
-															name="toWhom[]"
-															value="toVOS" />
-														<label class="form-check-label" for="toVOS"
-															>To VOS</label
-														>
-													</div>
-												</div>
-												<div class="col-auto">
-													<div class="form-check">
-														<input
-															type="checkbox"
-															class="form-check-input"
-															id="toNexio"
-															name="toWhom[]"
-															value="toNexio" />
-														<label class="form-check-label" for="toNexio"
-															>To Nexio</label
-														>
-													</div>
-												</div>
-												<div class="col-auto">
-													<div class="form-check">
-														<input
-															type="checkbox"
-															class="form-check-input"
-															id="toAffiliate"
-															name="toWhom[]"
-															value="toAffiliate" />
-														<label class="form-check-label" for="toAffiliate"
-															>To Affil</label
-														>
-													</div>
-												</div>
-												<div class="col-auto">
-													<div class="form-check">
-														<input
-															type="checkbox"
-															class="form-check-input"
-															id="toTMD"
-															name="toWhom[]"
-															value="toTMD" />
-														<label class="form-check-label" for="toTMD"
-															>To TMD</label
-														>
-													</div>
-												</div>
-											</div>
+									<div class="row g-2 mb-2">
+										<div class="col">
+											<label class="form-label" for="min_duration_sec"
+												>Min Duration</label
+											>
+											<input
+												type="number"
+												class="form-control"
+												id="min_duration_sec" />
+										</div>
+										<div class="col">
+											<label class="form-label" for="max_duration_sec"
+												>Max Duration</label
+											>
+											<input
+												type="number"
+												class="form-control"
+												id="max_duration_sec" />
 										</div>
 									</div>
-									<div class="mb-4">
-										<label for="folderPath" class="form-label"
-											>Folder Path</label
+									<div class="mb-2">
+										<label class="form-label">Destination 1</label>
+										<div class="dest-chips" id="destination_1_chips">
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="ignore">
+												Ignore
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="barterWatch">
+												Barter Movie
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="promoWatch">
+												Promo
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="eiWatch">
+												E/I Spotripper
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="standardProgWatch">
+												Program
+											</button>
+										</div>
+										<input type="hidden" id="destination_1" />
+									</div>
+									<div class="mb-2">
+										<label class="form-label"
+											>Destination 2
+											<small class="text-secondary">(optional)</small></label
 										>
+										<div class="dest-chips" id="destination_2_chips">
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="ignore">
+												Ignore
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="barterWatch">
+												Barter Movie
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="promoWatch">
+												Promo
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="eiWatch">
+												E/I Spotripper
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="standardProgWatch">
+												Program
+											</button>
+										</div>
+										<input type="hidden" id="destination_2" />
+									</div>
+									<div class="form-check mb-3 mt-2">
+										<input
+											class="form-check-input"
+											type="checkbox"
+											id="promo_possible" />
+										<label class="form-check-label" for="promo_possible"
+											>Promo Possible</label
+										>
+									</div>
+									<div class="d-flex gap-2 flex-wrap">
+										<button
+											type="submit"
+											class="btn btn-primary"
+											id="save-rule-btn">
+											Save Rule
+										</button>
+										<button
+											type="button"
+											class="btn btn-outline-light"
+											id="clear-rule-btn">
+											Clear
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<div class="card border shadow-sm">
+							<div class="card-body p-4">
+								<h6 class="section-label mb-3">
+									<i class="bi bi-search me-2"></i>Ingest Lookup Test
+								</h6>
+								<form id="formlookup" class="pathfinder-form">
+									<div class="mb-2">
+										<label for="title" class="form-label">Title</label>
 										<input
 											type="text"
 											class="form-control"
-											id="folderPath"
-											name="folderPath"
+											id="title"
+											name="title"
+											autocomplete="off" />
+									</div>
+									<div class="mb-2">
+										<label for="alt_id" class="form-label">Alt ID</label>
+										<input
+											type="text"
+											class="form-control"
+											id="alt_id"
+											name="alt_id"
+											autocomplete="off" />
+									</div>
+									<div class="mb-2">
+										<label for="filename" class="form-label">Filename</label>
+										<input
+											type="text"
+											class="form-control"
+											id="filename"
+											name="filename"
 											autocomplete="off" />
 									</div>
 									<button type="submit" class="btn btn-primary">
-										<i class="bi bi-plus-lg me-2"></i>Add Series
+										<i class="bi bi-play-circle me-2"></i>Test Lookup
 									</button>
 								</form>
 							</div>
 						</div>
 					</div>
 
-					<!-- Find / Edit Panel -->
-					<div class="col-12 col-lg-7">
+					<div class="col-12 col-xl-7">
 						<div class="card border shadow-sm h-100">
 							<div class="card-body p-4">
-								<h6 class="section-label mb-4">
-									<i class="bi bi-search me-2"></i>Find &amp; Edit Series
-								</h6>
-								<form id="formfind">
-									<div class="mb-3 d-flex gap-2 align-items-end">
-										<div>
-											<label for="search_prefix" class="form-label"
-												>Series Prefix</label
-											>
-											<input
-												type="text"
-												class="form-control prefix-input"
-												id="search_prefix"
-												oninput="validate(this)"
-												required
-												autocomplete="off" />
-										</div>
-										<button type="submit" class="btn btn-primary mb-0">
-											<i class="bi bi-search me-1"></i>Find
-										</button>
-									</div>
-								</form>
-
-								<div id="results" class="invisible">
-									<hr class="my-4" />
-									<form id="formresult">
-										<input
-											type="hidden"
-											id="searched_id"
-											name="searched_id"
-											value="" />
-										<div class="row g-3 mb-3">
-											<div class="col-auto">
-												<label for="searched_prefix" class="form-label"
-													>Series Prefix</label
-												>
-												<input
-													type="text"
-													class="form-control prefix-input"
-													id="searched_prefix"
-													name="searched_prefix"
-													value=""
-													readonly
-													autocomplete="off" />
-											</div>
-											<div class="col">
-												<label for="searched_program" class="form-label"
-													>Series Name</label
-												>
-												<input
-													type="text"
-													class="form-control"
-													id="searched_program"
-													name="searched_program"
-													value="" />
-											</div>
-										</div>
-										<div class="mb-3">
-											<label class="form-label">Where Do They Go?</label>
-											<div class="choices p-3 rounded">
-												<div class="row g-2">
-													<div class="col-auto">
-														<div class="form-check">
-															<input
-																type="checkbox"
-																class="form-check-input"
-																id="searched_toWeb"
-																name="updateToWhom[]"
-																value="toWeb" />
-															<label
-																class="form-check-label"
-																for="searched_toWeb"
-																>To Web</label
-															>
-														</div>
-													</div>
-													<div class="col-auto">
-														<div class="form-check">
-															<input
-																type="checkbox"
-																class="form-check-input"
-																id="searched_toVOS"
-																name="updateToWhom[]"
-																value="toVOS" />
-															<label
-																class="form-check-label"
-																for="searched_toVOS"
-																>To VOS</label
-															>
-														</div>
-													</div>
-													<div class="col-auto">
-														<div class="form-check">
-															<input
-																type="checkbox"
-																class="form-check-input"
-																id="searched_toNexio"
-																name="updateToWhom[]"
-																value="toNexio" />
-															<label
-																class="form-check-label"
-																for="searched_toNexio"
-																>To Nexio</label
-															>
-														</div>
-													</div>
-													<div class="col-auto">
-														<div class="form-check">
-															<input
-																type="checkbox"
-																class="form-check-input"
-																id="searched_toAffiliate"
-																name="updateToWhom[]"
-																value="toAffiliate" />
-															<label
-																class="form-check-label"
-																for="searched_toAffiliate"
-																>To Affil</label
-															>
-														</div>
-													</div>
-													<div class="col-auto">
-														<div class="form-check">
-															<input
-																type="checkbox"
-																class="form-check-input"
-																id="searched_toTMD"
-																name="updateToWhom[]"
-																value="toTMD" />
-															<label
-																class="form-check-label"
-																for="searched_toTMD"
-																>To TMD</label
-															>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="mb-4">
-											<label for="searched_path" class="form-label"
-												>Folder Path</label
-											>
-											<input
-												type="text"
-												class="form-control"
-												id="searched_path"
-												name="searched_path"
-												value="" />
-										</div>
-										<button type="submit" class="btn btn-primary me-2">
-											<i class="bi bi-floppy me-1"></i>Update
-										</button>
-									</form>
-									<form id="formresult_delete" class="mt-3">
-										<input type="hidden" id="searched_id_delete" value="" />
-										<button type="submit" class="btn btn-danger">
-											<i class="bi bi-trash3 me-1"></i>Delete
-										</button>
-									</form>
+								<div
+									class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+									<h6 class="section-label mb-0">
+										<i class="bi bi-table me-2"></i>Rule Manager
+									</h6>
+									<input
+										type="text"
+										class="form-control search-input"
+										id="rule-search"
+										placeholder="Search by program name..." />
+								</div>
+								<div id="rules-list" class="rules-list mb-4"></div>
+								<div id="results" class="result-shell">
+									<div class="result-chip mb-3">API Response</div>
+									<pre id="route-output" class="route-output">
+Select, create, or test a rule to see JSON output.</pre
+									>
 								</div>
 							</div>
 						</div>
@@ -349,12 +273,12 @@
 						letter-spacing: 0.08em;
 						text-transform: uppercase;
 					"
-					>Public Affairs Router</small
+					>Pathfinder</small
 				>
 			</footer>
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="index.js?v=8"></script>
+		<script src="index.js?v=13"></script>
 	</body>
 </html>

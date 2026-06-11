@@ -2,23 +2,23 @@ version: '3.8'
 
 services:
   api:
-    image: ghcr.io/siahmurph/parouter-op-api:latest
-    container_name: parouter_api
+    image: ghcr.io/siahmurph/pathfinder-api:latest
+    container_name: pathfinder_api
     restart: always
     ports:
       - "8000:8000"
     volumes:
-      - parouter_data:/app/data
+      - pathfinder_data:/app/data
     environment:
       - ROOT_PATH=/api
-      - DB_PATH=/app/data/ROUTES.db
+      - DB_PATH=/app/data/pathfinder.db
 
   frontend:
-    image: ghcr.io/siahmurph/parouter-op-frontend:latest
-    container_name: parouter_frontend
+    image: ghcr.io/siahmurph/pathfinder-frontend:latest
+    container_name: pathfinder_frontend
     restart: always
     ports:
       - "8005:80"
 
 volumes:
-  parouter_data:
+  pathfinder_data:

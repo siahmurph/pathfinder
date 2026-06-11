@@ -1,12 +1,34 @@
-import csv, sqlite3
+import csv
+import os
+import sqlite3
 
-conn = sqlite3.connect("ROUTES.db")
-cursor = conn.cursor()
 
-with open('cracker.csv','r') as csvdata:
-    all = csv.DictReader(csvdata)
-    to_db = [(row['PREFIX'], row['SERIES_NAME'], row['TO_WEB'], row['TO_VOS'], row['TO_NEXIO'], row['TO_AFFILIATE'], row['TO_TMD'], row['WEB_PATH']) for row in all]
+seed_paths = ["seed.csv", "seed.txt", "routing_rules.csv"]
+seed_path = next((path for path in seed_paths if os.path.exists(path)), None)
 
-cursor.executemany("INSERT INTO routes (prefix, series, to_web, to_vos, to_nexio, to_affiliate, to_tmd, web_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", to_db)
-conn.commit()
-conn.close()
+if seed_path:
+    conn = sqlite3.connect("pathfinder.db")
+    cursor = conn.cursor()
+
+    with open(seed_path, "r", newline="") as csvdata:
+        rows = csv.DictReader(csvdata)
+        to_db = [
+            (
+                row.get("program_name") or None,
+                row["match_type"],
+                row["pattern"],
+                row.get("min_duration_sec") or None,
+                row.get("max_duration_sec") or None,
+                row["destination_1"],
+                row.get("destination_2") or None,
+                int(row.get("promo_possible") or 0),
+            )
+            for row in rows
+        ]
+
+    cursor.executemany(
+        "INSERT INTO routing_rules (program_name, match_type, pattern, min_duration_sec, max_duration_sec, destination_1, destination_2, promo_possible) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+        to_db,
+    )
+    conn.commit()
+    conn.close()
