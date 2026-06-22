@@ -1,0 +1,17 @@
+# SQLite databases
+*.db
+*.db-shm
+*.db-wal
+
+# Local data volume
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Editor / OS
+.DS_Store
+*.swp

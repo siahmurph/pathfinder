@@ -1,21 +1,22 @@
 import sqlite3
- 
-conn = sqlite3.connect('ROUTES.db')
+
+
+conn = sqlite3.connect("pathfinder.db")
 cursor = conn.cursor()
 
-cursor.execute("DROP TABLE IF EXISTS routes")
- 
-create_table = '''CREATE TABLE IF NOT EXISTS routes(
-                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
-                prefix VARCHAR(16) NOT NULL UNIQUE,
-                series VARCHAR(256) NULL,
-                to_web VARCHAR(8) NULL,
-                to_vos VARCHAR(8) NULL,
-                to_nexio VARCHAR(8) NULL,
-                to_affiliate VARCHAR(8) NULL,
-                to_tmd VARCHAR(8) NULL,
-                web_path VARCHAR(512) NULL);
-                '''
+cursor.execute("DROP TABLE IF EXISTS routing_rules")
+
+create_table = """CREATE TABLE IF NOT EXISTS routing_rules(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                program_name TEXT,
+                match_type TEXT,
+                pattern TEXT,
+                min_duration_sec INTEGER DEFAULT NULL,
+                max_duration_sec INTEGER DEFAULT NULL,
+                destination_1 TEXT,
+                destination_2 TEXT DEFAULT NULL,
+                promo_possible INTEGER DEFAULT 0);
+                """
 
 cursor.execute(create_table)
 conn.commit()
