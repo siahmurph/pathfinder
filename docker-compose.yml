@@ -16,4 +16,4 @@ services:
     container_name: parouter_frontend
     restart: always
     ports:
-      - "8005:80"
+      - "8006:80"
