@@ -1,0 +1,7 @@
+images:
+  - name: pathfinder-api
+    dockerfile: ./api/Dockerfile
+    context: .
+  - name: pathfinder-frontend
+    dockerfile: ./frontend/Dockerfile
+    context: ./frontend

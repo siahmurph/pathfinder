@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image
+name: Build and Publish Docker Images
 
 on:
   push:
@@ -10,12 +10,28 @@ permissions:
   packages: write
   security-events: write
 
-
 jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate build matrix from image definitions
+        id: set-matrix
+        run: |
+          pip install pyyaml==6.0.1
+          matrix=$(python3 .github/scripts/generate_matrix.py)
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
   build-and-publish:
+    needs: prepare-matrix
+    strategy:
+      matrix: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
     uses: siahmurph/devops-templates/.github/workflows/docker-build-publish.yml@main
     with:
-      image_name: vanmanager
-      dockerfile_path: ./Dockerfile
-      context_path: .
+      image_name: ${{ matrix.image_name }}
+      dockerfile_path: ${{ matrix.dockerfile_path }}
+      context_path: ${{ matrix.context_path }}
     secrets: inherit
