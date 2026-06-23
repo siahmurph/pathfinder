@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pathfinder</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="maintenance-screen" class="d-none">
+			<div class="container-lg py-5 px-3 text-center">
+				<div class="card mx-auto" style="max-width: 480px">
+					<div class="card-body py-5">
+						<i
+							class="bi bi-cone-striped display-1 text-warning mb-3 d-block"></i>
+						<h3 class="mb-3">Under Maintenance</h3>
+						<p class="text-secondary" id="maintenance-message">
+							Pathfinder is temporarily unavailable.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<header class="app-header px-4 py-3 mb-4 d-flex align-items-center">
+			<div>
+				<div class="app-title">
+					<i
+						class="bi bi-compass-fill me-2 text-warning"
+						style="font-style: normal"></i>
+					Pathfinder
+				</div>
+				<div class="app-sub text-secondary mt-1">Media routing rule lookup</div>
+			</div>
+		</header>
+
+		<div id="main-content">
+			<main class="container-lg px-3 px-md-4 pb-5">
+				<div class="row g-4">
+					<div class="col-12 col-xl-5">
+						<div class="card border shadow-sm mb-4">
+							<div class="card-body p-4">
+								<h6 class="section-label mb-3" id="rule-form-heading">
+									<i class="bi bi-plus-circle me-2"></i>Create Rule
+								</h6>
+								<form id="rule-form" class="pathfinder-form">
+									<input type="hidden" id="rule_id" />
+									<div class="mb-2">
+										<label class="form-label" for="program_name"
+											>Program Name</label
+										>
+										<input class="form-control" id="program_name" required />
+									</div>
+									<div class="mb-2">
+										<label class="form-label" for="match_type"
+											>Match Type</label
+										>
+										<select class="form-select" id="match_type">
+											<option value="">(null)</option>
+											<option value="title">title</option>
+											<option value="alt_id">alt_id</option>
+											<option value="filename">filename</option>
+										</select>
+									</div>
+									<div class="mb-2">
+										<label class="form-label" for="pattern">Pattern</label>
+										<input
+											class="form-control"
+											id="pattern"
+											placeholder="%PROMO%" />
+									</div>
+									<div class="row g-2 mb-2">
+										<div class="col">
+											<label class="form-label" for="min_duration_sec"
+												>Min Duration</label
+											>
+											<input
+												type="number"
+												class="form-control"
+												id="min_duration_sec" />
+										</div>
+										<div class="col">
+											<label class="form-label" for="max_duration_sec"
+												>Max Duration</label
+											>
+											<input
+												type="number"
+												class="form-control"
+												id="max_duration_sec" />
+										</div>
+									</div>
+									<div class="mb-2">
+										<label class="form-label">Destination 1</label>
+										<div class="dest-chips" id="destination_1_chips">
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="ignore">
+												Ignore
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="barterWatch">
+												Barter Movie
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="promoWatch">
+												Promo
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="eiWatch">
+												E/I Spotripper
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="standardProgWatch">
+												Program
+											</button>
+										</div>
+										<input type="hidden" id="destination_1" />
+									</div>
+									<div class="mb-2">
+										<label class="form-label"
+											>Destination 2
+											<small class="text-secondary">(optional)</small></label
+										>
+										<div class="dest-chips" id="destination_2_chips">
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="ignore">
+												Ignore
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="barterWatch">
+												Barter Movie
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="promoWatch">
+												Promo
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="eiWatch">
+												E/I Spotripper
+											</button>
+											<button
+												type="button"
+												class="dest-chip"
+												data-value="standardProgWatch">
+												Program
+											</button>
+										</div>
+										<input type="hidden" id="destination_2" />
+									</div>
+									<div class="form-check mb-3 mt-2">
+										<input
+											class="form-check-input"
+											type="checkbox"
+											id="promo_possible" />
+										<label class="form-check-label" for="promo_possible"
+											>Promo Possible</label
+										>
+									</div>
+									<div class="d-flex gap-2 flex-wrap">
+										<button
+											type="submit"
+											class="btn btn-primary"
+											id="save-rule-btn">
+											Save Rule
+										</button>
+										<button
+											type="button"
+											class="btn btn-outline-light"
+											id="clear-rule-btn">
+											Clear
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<div class="card border shadow-sm">
+							<div class="card-body p-4">
+								<h6 class="section-label mb-3">
+									<i class="bi bi-search me-2"></i>Ingest Lookup Test
+								</h6>
+								<form id="formlookup" class="pathfinder-form">
+									<div class="mb-2">
+										<label for="title" class="form-label">Title</label>
+										<input
+											type="text"
+											class="form-control"
+											id="title"
+											name="title"
+											autocomplete="off" />
+									</div>
+									<div class="mb-2">
+										<label for="alt_id" class="form-label">Alt ID</label>
+										<input
+											type="text"
+											class="form-control"
+											id="alt_id"
+											name="alt_id"
+											autocomplete="off" />
+									</div>
+									<div class="mb-2">
+										<label for="filename" class="form-label">Filename</label>
+										<input
+											type="text"
+											class="form-control"
+											id="filename"
+											name="filename"
+											autocomplete="off" />
+									</div>
+									<button type="submit" class="btn btn-primary">
+										<i class="bi bi-play-circle me-2"></i>Test Lookup
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-xl-7">
+						<div class="card border shadow-sm h-100">
+							<div class="card-body p-4">
+								<div
+									class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+									<h6 class="section-label mb-0">
+										<i class="bi bi-table me-2"></i>Rule Manager
+									</h6>
+									<input
+										type="text"
+										class="form-control search-input"
+										id="rule-search"
+										placeholder="Search by program name..." />
+								</div>
+								<div id="rules-list" class="rules-list mb-4"></div>
+								<div id="results" class="result-shell">
+									<div class="result-chip mb-3">API Response</div>
+									<pre id="route-output" class="route-output">
+Select, create, or test a rule to see JSON output.</pre
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="text-center py-4">
+				<small
+					class="text-secondary opacity-50"
+					style="
+						font-size: 0.7rem;
+						letter-spacing: 0.08em;
+						text-transform: uppercase;
+					"
+					>Pathfinder</small
+				>
+			</footer>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="index.js?v=13"></script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+PREFIX,SERIES_NAME,TO_WEB,TO_VOS,TO_NEXIO,TO_AFFILIATE,TO_SAPPHIRE_AB_HD,TO_SAPPHIRE_AB_SD,TO_SAPPHIRE_CD_HD,TO_SAPPHIRE_CD_SD,TO_TMD,WEB_PATH
+ATSC,@Seattle Colleges,NO,YES,NO,NO,YES,NO,NO,NO,YES,N/A
+AZME,Arizona & Me,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\metv\local-arizona-and-me
+BASE,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+BASK,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+BRSTRM,Brainstorm,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+BSOC,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+CALME,California & Me,YES,YES,NO,NO,YES,YES,NO,NO,YES,\\media-ftp\digital\Video\metv\local-california-and-me
+CHAL,Challenge 2.0,NO,YES,NO,NO,YES,NO,NO,NO,YES,N/A
+CICU,City Current,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+COLME,Colorado & Me,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\metv\local-colorado-and-me
+COWC,Commonwealth Club,NO,YES,NO,NO,YES,YES,NO,NO,YES,N/A
+DISCR,Discovery Road,NO,NO,NO,YES,NO,NO,NO,NO,YES,N/A
+EMPOW,Empowerista,NO,YES,NO,NO,NO,YES,YES,NO,YES,N/A
+FEST,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+FWL,Fishing With Ladin,NO,YES,NO,NO,YES,NO,NO,NO,YES,N/A
+GATDC,Gather DC,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+GRAD,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+GSOC,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+HSBA,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+HSFB,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+INVLA,Invigorate LA,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+JHCLEV,Job Hunt Cleveland,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\wciu\jobhuntcleveland
+JHDC,Job Hunt DC,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\metv\local-job-hunt-dc
+JHIOWA,Job Hunt Iowa,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\wciu\jobhuntiowa
+JHMEX,Job Hunt New Mexico,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\wciu\jobhuntnewmexico
+JHNY,Job Hunt New York,YES,YES,NO,NO,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\wciu\jobhuntnewyork
+LAHEAL,LA Health and ME,YES,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+MESSIAH,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+NJPLJ,New Jersey Politics,YES,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+NOWSTL,Now St. Louis,YES,YES,NO,NO,YES,NO,NO,NO,YES,\\media-ftp\digital\Video\metv\local-now-stlouis
+PPBOC,Pat P. Best of California,NO,YES,NO,NO,YES,NO,NO,NO,YES,N/A
+SASS,Suki and Scott Show,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+SOFT,Iowa Miscellaneous,NO,YES,NO,NO,NO,NO,NO,YES,YES,N/A
+STLME,St. Louis and Me,NO,YES,NO,NO,YES,NO,NO,NO,YES,N/A
+TEXME,Texas and Me,YES,YES,NO,YES,NO,NO,YES,NO,YES,\\media-ftp\digital\Video\metv\local-texas-and-me
+TOTX,Talk of Texas,NO,YES,NO,YES,NO,NO,YES,NO,YES,N/A
+TRTK,Trend Talk,NO,YES,NO,NO,YES,YES,NO,NO,YES,N/A
+UTEX,Utah Explored,NO,YES,NO,YES,YES,NO,NO,NO,YES,\\media-ftp\digital\Video\metv\local-utah-explored
+UTME,Utah & Me,YES,YES,NO,YES,NO,NO,NO,NO,YES,\\media-ftp\digital\Video\metv\local-utah-and-me
+WASHME,Washington & Me,YES,YES,NO,NO,YES,NO,NO,NO,YES,\\media-ftp\digital\Video\metv\local-washington-and-me
+YOURDC,Your DC,NO,YES,NO,NO,NO,NO,YES,NO,YES,N/A
+YOURNJ,Your New Jersey,YES,YES,NO,NO,NO,NO,YES,NO,YES,N/A

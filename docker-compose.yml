@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: pathfinder_api
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - ROOT_PATH=/api
+      - DB_PATH=/app/data/pathfinder.db
+
+  frontend:
+    build: ./frontend
+    container_name: pathfinder_frontend
+    restart: always
+    ports:
+      - "8006:80"

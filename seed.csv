@@ -1,0 +1,26 @@
+program_name,match_type,pattern,min_duration_sec,max_duration_sec,destination_1,destination_2,promo_possible
+Promo,title,%PROMO%,,,ignore,,0
+Family Feud 2nd,title,%Feud Favorites 2nd%,,,ignore,,0
+Family Feud RD,title,Family Feud %RD Run,,,ignore,,0
+Modern Family,title,Modern%Wknd 4%,,,ignore,,0
+Time For Baby,title,%TIME%Baby 2%,,,ignore,,0
+Modern Family Weekend,title,Modern%Wknd 3%,,,ignore,,0
+GMA Life,title,GMA Life,,,ignore,,0
+TMZ Live,title,%TMZ Live%,,,ignore,,0
+Real PT,title,%RPT%,,,ignore,,0
+TMZ Delay,title,TMZ%Delay,,,ignore,,0
+Family Feud TH,title,Family Feud %TH Run,,,ignore,,0
+Episodic,title,%EPISODIC%,,,ignore,,0
+Extra,title,EXTRA Day Delay,,,ignore,,0
+Time Set Pet,title,%TIME%Set Pet%,,,ignore,,0
+Judge J,alt_id,%JJM%,,,ignore,,0
+No clue,alt_id,%SJKMB%,,,ignore,,0
+No Clue,alt_id,%ACJRB%,,,ignore,,0
+Barter Movie,alt_id,%REEL%,,,barterWatch,,0
+EI1,filename,%DABLHGL%,,,standardProgWatch,eiWatch,1
+EI2,filename,%DABLWLC%,,,standardProgWatch,eiWatch,1
+EI3,filename,%DABLOHB%,,,standardProgWatch,eiWatch,1
+EI4,filename,%DABLBFFE%,,,standardProgWatch,eiWatch,1
+EI5,filename,%STARTJDDRY%,,,standardProgWatch,eiWatch,1
+EI6,filename,%STARTRRHAB%,,,standardProgWatch,eiWatch,1
+EI7,filename,%HINE%,,,standardProgWatch,eiWatch,1
