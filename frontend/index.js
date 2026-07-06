@@ -1,4 +1,4 @@
-const apiUrl = '/api'
+const apiUrl = '/pathfinder/api'
 const formLookup = document.getElementById('formlookup')
 const formRule = document.getElementById('rule-form')
 const routeOutput = document.getElementById('route-output')

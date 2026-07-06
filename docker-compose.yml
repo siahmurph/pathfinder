@@ -1,21 +1,21 @@
+version: '3.8'
+
 services:
   api:
-    build:
-      context: .
-      dockerfile: api/Dockerfile
+    image: ghcr.io/siahmurph/pathfinder-api:latest
     container_name: pathfinder_api
-    restart: always
+    restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
-      - ./data:/app/data
+      - /opt/apps/pathfinder/data:/app/data
     environment:
-      - ROOT_PATH=/api
+      - ROOT_PATH=/pathfinder/api
       - DB_PATH=/app/data/pathfinder.db
 
   frontend:
-    build: ./frontend
+    image: ghcr.io/siahmurph/pathfinder-frontend:latest
     container_name: pathfinder_frontend
-    restart: always
+    restart: unless-stopped
     ports:
       - "8006:80"
