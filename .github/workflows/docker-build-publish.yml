@@ -2,10 +2,7 @@ name: Docker Build and Publish
 
 on:
   push:
-    branches:
-      - master
-      - main
-      - operapps-ui-refresh
+    branches: [main]
   workflow_dispatch:
 
 env:

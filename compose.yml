@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   api:
     image: ghcr.io/siahmurph/pathfinder-api:latest
-    container_name: pathfinder_api
+    container_name: pathfinder-api
     restart: unless-stopped
     ports:
       - "8001:8000"
@@ -12,10 +10,20 @@ services:
     environment:
       - ROOT_PATH=/pathfinder/api
       - DB_PATH=/app/data/pathfinder.db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   frontend:
     image: ghcr.io/siahmurph/pathfinder-frontend:latest
-    container_name: pathfinder_frontend
+    container_name: pathfinder-frontend
     restart: unless-stopped
     ports:
       - "8006:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
