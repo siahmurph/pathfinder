@@ -20,22 +20,6 @@ const fields = {
   promo_possible: document.getElementById('promo_possible')
 }
 
-;(async function checkMaintenance () {
-  try {
-    const res = await fetch('/crusher/status.json', { cache: 'no-store' })
-    if (!res.ok) return
-    const status = await res.json()
-    if (status.pathfinder?.enabled) {
-      document.getElementById('main-content').classList.add('d-none')
-      document.getElementById('maintenance-screen').classList.remove('d-none')
-      document.getElementById('maintenance-message').textContent =
-        status.pathfinder.message || 'Pathfinder is temporarily unavailable.'
-    }
-  } catch {
-    /* show app normally */
-  }
-})()
-
 // ── Destination label map ───────────────────────────────────────────────
 const DEST_LABELS = {
   ignore: 'Ignore',

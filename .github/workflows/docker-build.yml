@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - operapps-ui-refresh
   workflow_dispatch:
 
 env:
